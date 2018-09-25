@@ -26,9 +26,9 @@ switch (command) {
   case "list":
     var fetchedList = notes.getAll();
     if (fetchedList.length !== 0) {
-      console.log("Listing all notes\n--");
+      console.log(`Listing ${fetchedList.length} Notes:\n--`);
       fetchedList.forEach(note => {
-        console.log(note.title);
+        console.log(`Title: ${note.title}\nBody: ${note.body}\n--`);
       });
     } else {
       console.log("There are no notes to list");
