@@ -15,7 +15,7 @@ var saveNotes = notes => {
   fs.writeFileSync("notes-data.json", JSON.stringify(notes));
 };
 
-//resets the untitled counter in case an untitled note is deleted
+//resets the untitled counter for all of the notes in case an untitled note is removed or renamed
 var untitledIndexResetter = notes => {
   var index = 1;
   var updatedNotes = [];
@@ -100,7 +100,8 @@ var renameNote = (title, newTitle) => {
     var duplicateNotes = notes.filter(note => note.title === newTitle);
     if (duplicateNotes.length === 0) {
       notes[noteIndex].title = newTitle;
-      saveNotes(notes);
+      var resetIndexNotes = untitledIndexResetter(notes);
+      saveNotes(resetIndexNotes);
       return 1;
     }
     return 2;
