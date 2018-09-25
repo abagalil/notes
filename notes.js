@@ -59,13 +59,7 @@ var addNote = (title = untitledIndexer(fetchNotes()), body = "") => {
 
 //prints all note titles to the console
 var getAll = () => {
-  var notes = fetchNotes();
-  if (notes.length !== 0) {
-    notes.forEach(note => {
-      console.log(note.title);
-    });
-    return true;
-  }
+  return fetchNotes();
 };
 
 //fetches a note from the notes array
